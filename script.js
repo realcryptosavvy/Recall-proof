@@ -198,5 +198,14 @@ shareTwitterButton.addEventListener('click', () => {
   
   window.open(tweetIntentUrl, '_blank');
 });
-
+if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+  document.body.innerHTML = `
+    <div style="text-align: center; color: white; padding: 2rem;">
+      <h2>Sorry, this game is only available on desktop devices.</h2>
+      <p>Please open this page on a desktop browser to play.</p>
+    </div>
+  `;
+} else {
+  createBoard(); // Run the game only if not on mobile
+}
 createBoard();

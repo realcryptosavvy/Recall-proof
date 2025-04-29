@@ -174,7 +174,7 @@ gotItButton.addEventListener('click', () => {
 });
 shareTwitterButton.addEventListener('click', () => {
   const quoteText = `I completed the Recall-proof Game in ${moves} moves and ${seconds} seconds! `;
-  const quotedTweetUrl = 'https://twitter.com/YOUR_HANDLE/status/TWEET_ID'; // <-- replace with your real tweet URL
+  const quotedTweetUrl = 'https://x.com/meta_savvy/status/1917173610940174734?t=yBfiU_sEAc3jWfa1VyYxNQ&s=19; // <-- replace with your real tweet URL
   const tweetIntentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(quoteText)}&url=${encodeURIComponent(quotedTweetUrl)}`;
   
   window.open(tweetIntentUrl, '_blank');

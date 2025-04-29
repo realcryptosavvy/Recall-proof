@@ -1,0 +1,211 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('bh.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+#rulesButton, #resetButton {
+  padding: 10px 20px;
+  background: #1f2937;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+#gotItButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #1f2937;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+  transition: background 0.3s;
+}
+
+#gotItButton:hover {
+  background: #374151;
+}
+
+.info-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #FF5A5A;
+  padding: 10px 30px;
+  border-radius: 12px;
+  font-weight: bold;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+  color: white;
+}
+
+#moveDisplay, #timeDisplay {
+  font-size: 18px;
+}
+
+.game-container {
+  background: linear-gradient(45deg, #57072B, #941A3C);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 20px rgba(0,0,0,0.4);
+}
+
+.game-board {
+  width: 500px;
+  height: 500px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 15px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  perspective: 1000px;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+.card-inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card.flip .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #333;
+}
+
+.card-front img, .card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+/* Modal Styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.3);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#closeModal {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* Footer */
+.footer {
+  margin-top: 20px;
+  font-size: 14px;
+  color: white;
+}
+
+.footer a {
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+/* Stats Screen */
+.stats-screen {
+  display: none;
+  position: fixed;
+  z-index: 20;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('stats.jpg');
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+}
+
+.stats-content {
+  background: rgba(255,255,255,0.9);
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.stats-content h2 {
+  margin-bottom: 20px;
+}
+
+.fade-out {
+  animation: fadeOut 0.2s forwards;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.stats-content button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #FFA9C1;
+  border: none;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}

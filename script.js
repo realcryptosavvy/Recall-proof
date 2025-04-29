@@ -158,7 +158,7 @@ function resetBoard() {
 function victory() {
   stopTimer();
   document.querySelectorAll('.card').forEach(card => {
-    card.style.opacity = 40;
+    card.style.opacity = 50;
   });
   setTimeout(() => {
     statsScreen.style.display = 'flex';
@@ -166,6 +166,38 @@ function victory() {
     finalTime.textContent = `Time: ${seconds} seconds`;
   }, 1000);
 }
+
+
+
+resetButton.addEventListener('click', createBoard);
+rulesButton.addEventListener('click', () => modal.style.display = 'flex');
+closeModal.addEventListener('click', () => modal.style.display = 'none');
+
+const replayButton = document.getElementById('replayButton');
+
+
+replayButton.addEventListener('click', () => {
+  statsScreen.classList.add('fade-out');
+  
+  setTimeout(() => {
+    statsScreen.style.display = 'none'; // Hide the stats screen
+    statsScreen.classList.remove('fade-out'); // Reset the fade-out effect
+    createBoard(); // Restart the game
+  }, 200); // Match duration of the fade-out animation
+});
+
+const gotItButton = document.getElementById('gotItButton');
+
+gotItButton.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+shareTwitterButton.addEventListener('click', () => {
+  const quoteText = `I completed the Brain Train Game in ${moves} moves and ${seconds} seconds! `;
+  const quotedTweetUrl = 'https://twitter.com/YOUR_HANDLE/status/TWEET_ID'; // <-- replace with your real tweet URL
+  const tweetIntentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(quoteText)}&url=${encodeURIComponent(quotedTweetUrl)}`;
+  
+  window.open(tweetIntentUrl, '_blank');
+});
 
 window.addEventListener('DOMContentLoaded', () => {
   const bgMusic = document.getElementById('bgMusic');
@@ -195,18 +227,6 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-const gotItButton = document.getElementById('gotItButton');
-
-gotItButton.addEventListener('click', () => {
-  modal.style.display = 'none';
-});
-shareTwitterButton.addEventListener('click', () => {
-  const quoteText = `I completed the Recall-proof Game in ${moves} moves and ${seconds} seconds! `;
-  const quotedTweetUrl = 'https://x.com/meta_savvy/status/1917173610940174734?t=yBfiU_sEAc3jWfa1VyYxNQ&s=19; // <-- replace with your real tweet URL
-  const tweetIntentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(quoteText)}&url=${encodeURIComponent(quotedTweetUrl)}`;
-  
-  window.open(tweetIntentUrl, '_blank');
-});
 if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
   document.body.innerHTML = `
     <div style="text-align: center; color: white; padding: 2rem;">
@@ -217,4 +237,5 @@ if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
 } else {
   createBoard(); // Run the game only if not on mobile
 }
+
 createBoard();

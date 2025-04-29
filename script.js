@@ -167,52 +167,6 @@ function victory() {
   }, 1000);
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-  const bgMusic = document.getElementById('bgMusic');
-  if (bgMusic) {
-    bgMusic.volume = 0.4;
-
-    const playMusic = () => {
-      const playAttempt = bgMusic.play();
-      if (playAttempt !== undefined) {
-        playAttempt.catch(() => {
-          document.addEventListener('click', () => {
-            bgMusic.play();
-          }, { once: true });
-        });
-      }
-    };
-
-    playMusic();
-
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        bgMusic.pause();
-      } else {
-        playMusic();
-      }
-    });
-  }
-});
-
-
-resetButton.addEventListener('click', createBoard);
-rulesButton.addEventListener('click', () => modal.style.display = 'flex');
-closeModal.addEventListener('click', () => modal.style.display = 'none');
-
-const replayButton = document.getElementById('replayButton');
-
-
-replayButton.addEventListener('click', () => {
-  statsScreen.classList.add('fade-out');
-  
-  setTimeout(() => {
-    statsScreen.style.display = 'none'; // Hide the stats screen
-    statsScreen.classList.remove('fade-out'); // Reset the fade-out effect
-    createBoard(); // Restart the game
-  }, 200); // Match duration of the fade-out animation
-});
-
 const gotItButton = document.getElementById('gotItButton');
 
 gotItButton.addEventListener('click', () => {

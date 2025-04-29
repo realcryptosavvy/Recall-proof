@@ -158,7 +158,7 @@ function resetBoard() {
 function victory() {
   stopTimer();
   document.querySelectorAll('.card').forEach(card => {
-    card.style.opacity = 0;
+    card.style.opacity = 40;
   });
   setTimeout(() => {
     statsScreen.style.display = 'flex';
@@ -192,7 +192,7 @@ gotItButton.addEventListener('click', () => {
   modal.style.display = 'none';
 });
 shareTwitterButton.addEventListener('click', () => {
-  const quoteText = `I completed the Brain Train Game in ${moves} moves and ${seconds} seconds! `;
+  const quoteText = `I completed the Recall-proof Game in ${moves} moves and ${seconds} seconds! `;
   const quotedTweetUrl = 'https://twitter.com/YOUR_HANDLE/status/TWEET_ID'; // <-- replace with your real tweet URL
   const tweetIntentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(quoteText)}&url=${encodeURIComponent(quotedTweetUrl)}`;
   

@@ -167,6 +167,34 @@ function victory() {
   }, 1000);
 }
 
+window.addEventListener('DOMContentLoaded', () => {
+  const bgMusic = document.getElementById('bgMusic');
+  if (bgMusic) {
+    bgMusic.volume = 0.4;
+
+    const playMusic = () => {
+      const playAttempt = bgMusic.play();
+      if (playAttempt !== undefined) {
+        playAttempt.catch(() => {
+          document.addEventListener('click', () => {
+            bgMusic.play();
+          }, { once: true });
+        });
+      }
+    };
+
+    playMusic();
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        bgMusic.pause();
+      } else {
+        playMusic();
+      }
+    });
+  }
+});
+
 const gotItButton = document.getElementById('gotItButton');
 
 gotItButton.addEventListener('click', () => {

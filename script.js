@@ -167,6 +167,24 @@ function victory() {
   }, 1000);
 }
 
+window.addEventListener('DOMContentLoaded', () => {
+  const bgMusic = document.getElementById('bgMusic');
+  if (bgMusic) {
+    bgMusic.volume = 0.4;
+
+    // Try to play immediately (some browsers require interaction)
+    const playAttempt = bgMusic.play();
+    if (playAttempt !== undefined) {
+      playAttempt.catch(() => {
+        // Wait for user interaction if blocked
+        document.addEventListener('click', () => {
+          bgMusic.play();
+        }, { once: true });
+      });
+    }
+  }
+});
+
 
 
 resetButton.addEventListener('click', createBoard);

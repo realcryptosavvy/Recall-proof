@@ -193,7 +193,7 @@ gotItButton.addEventListener('click', () => {
 });
 shareTwitterButton.addEventListener('click', () => {
   const quoteText = `I completed the Brain Train Game in ${moves} moves and ${seconds} seconds! `;
-  const quotedTweetUrl = 'https://twitter.com/YOUR_HANDLE/status/https:/1917176517693477197?t=hQPY4y8uFRhLEKTvxZE-jQ&s=19'; // <-- replace with your real tweet URL
+  const quotedTweetUrl = 'https://x.com/meta_savvy/status/1917176517693477197?t=lH7XDNq_yaTU-noiUgDM1Q&s=19'; // <-- replace with your real tweet URL
   const tweetIntentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(quoteText)}&url=${encodeURIComponent(quotedTweetUrl)}`;
   
   window.open(tweetIntentUrl, '_blank');
